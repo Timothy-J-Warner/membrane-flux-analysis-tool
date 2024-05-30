@@ -1,5 +1,48 @@
 # Changelog
 
+## v0.1.1
+
+### Reading CSV Files:
+
+Before: Each channel was read separately into different DataFrames.
+After: The channels are read into a list of DataFrames using a list comprehension, reducing redundancy.
+Data Extraction:
+
+Before: Data for each channel was converted to numpy arrays separately.
+After: Data extraction for each channel was combined into a single list comprehension, streamlining the process.
+
+### Variable Allocation:
+
+Before: Constants were assigned individually from the array.
+After: Constants are unpacked directly from the array in a single line.
+Rolling Average Calculation:
+
+Before: Rolling averages were calculated using manual loops.
+After: Rolling averages are calculated using Pandas' built-in rolling function, making the code more concise and
+readable.
+
+### Flux Calculation:
+
+Before: Separate flux vectors were used for each channel.
+After: A single 2D array is used for all channels, simplifying the code structure.
+
+
+### Data Series Creation:
+
+Before: Data series were created and concatenated separately.
+After: Data series are combined into a dictionary and directly converted into a DataFrame.
+
+### File Export:
+
+Before: The DataFrame was exported without specifying the index parameter.
+After: The DataFrame is exported with index=False to omit the index from the CSV file.
+
+### Debugging
+
+Before: Choosing an analysis time when there was a data time missing would cause the compling to fail.
+After: Choosing an analysis time when there was a data time missing results in a zero value for mass at that time
+and an error message describing the issue is printed.
+
 ## v0.1.0
 
 ### Added
