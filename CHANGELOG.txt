@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.2
+
+Implemented a conversion from measured mass to volume using Kell's equation and updated all related areas of the code
+
 ## v0.1.1
 
 ### Reading CSV Files:
