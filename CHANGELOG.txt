@@ -1,0 +1,12 @@
+# Changelog
+
+## v0.1.0
+
+### Added
+
+- Development of minimum viable code to calculate flux based on the provided data and inputs
+- Reading time-mass data, inputs and test conditions from .csv files.
+- Applying data smoothing to the mass values.
+- Finding mass values at the start and end of the specified test windows.
+- Calculating flux from changes in mass and membrane properties.
+- Generating outputs.csv file from analysis results.

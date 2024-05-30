@@ -1,0 +1,73 @@
+# Flux Calculation Validation
+
+## Test Set-up
+
+### Set up constants.csv as follows:
+
+Length (cm),	Diameter (mm),	Number of fibers,	Test Duration (s)
+10.0,		1.2,		3.0,			60
+
+### Set up test_conditions.csv as follows:
+
+Measurement Start time (24hr time),Pressure (PSI)
+19:23:00, 				19.5
+18:56:00,			 	29.7
+18:31:00,				39.7
+18:05:00,				50.0
+
+### Use the provided time-mass data files provided: 'Channel_0.csv', 'Channel_1.csv', and 'Channel_2.csv'
+
+## Expected Output
+
+,	Measurement Start time (24hr time),	Pressure (bar),		Flux 0 (LMH),		Flux 1 (LMH),		Flux 2 (LMH)
+0,	19:23:00,				1.3444782,		1157.0278884856418,	1183.9379644335602,	1180.4284289339669
+1,	18:56:00,				2.0477437199999997,	1761.9844479112267,	1830.8353267231612,	1732.7161908732098
+2,	18:31:00,				2.73721972,		2392.7545735886715,	2484.6929562735513,	2332.6921652899177
+3,	18:05:00,				3.44738,		3053.053826438669,	3189.0953475381275,	2966.253221738315
+
+## Validation of Output
+
+Surface area of the membrane 	= 2 * pi * fiber radius * fiber length * number of fibers
+				= 2 * pi * 1.2 / 2 / 1000 * 10.0 / 100 * 3
+				= 0.001131 (m^2)
+Test Duration 			= 60 (s) = 0.016667 (hr)
+Flux 				= Mass change (kg) / Surface area (m^2) / Test Duration (hr)
+
+
+### Flux Validation
+
+Masses are taken from rolling_average variables not raw .csv data
+
+Time		Mass 0 (g)		Mass 1 (g)		Mass 2 (g)
+19:23:00	480.40807018		391.31955526		337.6988698
+19:23:59	502.21753207		413.6362601		359.9494215
+Change		21.76810263		22.31670487		22.25055168
+
+Flux (LMH)	1157.027886		1183.937962		1180.428426
+
+18:56:00	570.8857671		579.0626768		620.6206984
+18:56:00	604.0983915		613.5731097		653.2816292
+Change		33.21262438		34.51043287		32.66093074
+
+Flux(LMH)	1761.984444		1830.835323		1732.716188
+
+18:31:00	384.6993739		386.793624		485.0649389
+18:31:00	429.801735		433.6289829		529.0351503
+Change		45.10236114		46.83535883		43.97021142
+
+Flux(LMH)	2392.754569		2484.692951		2332.692161
+
+18:05:00	485.8065297		508.3394511		418.0706269
+18:05:00	543.3552386		568.4524821		473.9831829
+Change		57.54870883		60.11303109		55.91255598
+
+Flux(LMH)	3053.05382		3189.095341		2966.253216
+
+
+Output of code matches manual calculation of flux using change in mass (kg), Surface area (m^2) & Test Duration (hr).		
+
+
+
+
+
+
