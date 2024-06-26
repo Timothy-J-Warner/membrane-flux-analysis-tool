@@ -3,8 +3,8 @@ import pandas as pd
 
 # Read csv files
 channels = [pd.read_csv(f'data/Channel_{i}.csv') for i in range(3)]
-df_constants = pd.read_csv('constants.csv')
-df_test_conditions = pd.read_csv('test_conditions.csv')
+df_constants = pd.read_csv('inputs/constants.csv')
+df_test_conditions = pd.read_csv('inputs/test_conditions.csv')
 
 # Extract relevant data from the channels and convert to numpy arrays
 mass_data = [channel[f'Weight [Bridge Input Ch:{i} -> 1046 S/N:583686]'].to_numpy() for i, channel in
@@ -50,6 +50,10 @@ for i, start_time in enumerate(test_time):
                              rolling_averages[j][time_index]) / 1000
             flux[j, i] = volume_change / surface_area / (duration / 3600)
 
+average_flux = np.mean([flux[0], flux[1], flux[2]], axis=0)
+flux_std = np.std([flux[0], flux[1], flux[2]], axis=0)
+flux_se = flux_std / average_flux * 100
+
 
 # Create data series of output variables to be exported to a .csv file
 output_data = {
@@ -58,8 +62,11 @@ output_data = {
     'Flux 0 (LMH)': flux[0],
     'Flux 1 (LMH)': flux[1],
     'Flux 2 (LMH)': flux[2],
+    'Average Flux (LMH)': average_flux,
+    'Standard Deviation (LMH)': flux_std,
+    'Standard Error (%)': flux_se,
 }
 
 # Create output DataFrame and export to .csv file
 df_outputs = pd.DataFrame(output_data)
-df_outputs.to_csv("outputs.csv", index=False)
+df_outputs.to_csv("outputs/outputs.csv", index=False)
