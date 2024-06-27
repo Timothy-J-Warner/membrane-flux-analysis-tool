@@ -1,2 +1,2 @@
-Length (cm),	Diameter (mm),	Number of fibers,	Test Duration (s),  Test Temperature (C)
-10.0,		1.2,		1,			60, 22.0
+Flat sheet area (m^2),Fiber Length (cm),Fiber Diameter (mm), Number of membranes per load cell,Test Duration (s),Test Temperature (C)
+0.00125663706,10.0,1.2,1,60,22.0

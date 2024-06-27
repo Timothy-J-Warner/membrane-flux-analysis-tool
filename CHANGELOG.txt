@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.1.3
+
+Added extra features to the code including selections for pressure input units, number of load cells,membrane
+geometry and data smoothing interval. Warning messages are present that alert the user if the config.csv file is
+incorrectly formatted.
+
+Improved versatility of the code. The headings in the data files are no longer used to identify columns for creating
+variables. The time is now always in the first data column and the mass is in the second column.
+
 ## v0.1.2
 
 Implemented a conversion from measured mass to volume using Kell's equation and updated all related areas of the code
