@@ -1,10 +1,21 @@
 # Changelog
 
+## v0.2.1
+
+- Updated README.md to reflect change in repository name.
+- Changed file extension of CHANGELOG.txt to .md
+- Changed main file name to "membrane-flux-analysis-tool.py"
+- Removed redundant test folder
+- Added example data show demonstrate to users how to generate permeance data
+- Added a modules folder for future plotting functionality
+- Added a module calling section at the end of "membrane-flux-analysis-tool.py"
+- Integrated a permeance calculation and plotting module into the tool
+
 ## v0.2.0
 
 - Renamed variable for clarity.
-- Added the ability to specify a testing interval time for the load cells
-- Rearrange location of variables in input files
+- Added the ability to specify a testing interval time for the load cells.
+- Rearrange location of variables in input files.
 
 ## v0.1.3
 
@@ -63,8 +74,6 @@ After: Choosing an analysis time when there was a data time missing results in a
 and an error message describing the issue is printed.
 
 ## v0.1.0
-
-### Added
 
 - Development of minimum viable code to calculate flux based on the provided data and inputs
 - Reading time-mass data, inputs and test conditions from .csv files.
