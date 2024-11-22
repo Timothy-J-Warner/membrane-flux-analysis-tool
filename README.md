@@ -22,15 +22,14 @@ data-logging load cells, input values describing the properties of the membranes
 including time at which the flux testing window should begin and the test pressure at the test time. The program 
 converts mass to volume based on test room temperature and Kell's equation, applies data smoothing to reduce 
 fluctuations in the volume data calculated from the load cells then uses changes in volume and 
-properties on the membranes to calculate flux based on specified test conditions.
+properties of the membranes to calculate flux based on specified test conditions.
 
 It currently has the following limitations and known bugs:
-- Time-mass data must be 1 measurement per second.
 - The time-mass data files must be named 'Channel_0.csv', 'Channel_1.csv', etc.
+- If channel data is in HH:MM:SS format then test_conditions.csv must have time in HH:MM:SS format.
 - Units of inputs have limited choices and output units are set
 - Pressure measurement must be recorded during the experiment manually to be included in the test conditions file.
-- If there are multiple or no mass values for a specified test time the program will error but a descriptive error
-message will occur
+- If there are no mass values for a specified test time the program will end and provide a descriptive error message.
 
 ### Built With
 
@@ -40,9 +39,10 @@ message will occur
 
 - Feature 1: Reading time-mass data, inputs and test conditions from .csv files.
 - Feature 2: Applying data smoothing to the mass values.
-- Feature 3: Finding mass values at the start and end of the specified test windows.
-- Feature 4: Calculating flux from changes in mass and membrane properties.
-- Feature 5: Generating outputs.csv file from analysis results.
+- Feature 3: Converting mass to volume
+- Feature 4: Finding volume values at the start and end of the specified test windows.
+- Feature 5: Calculating flux from changes in volume and membrane properties.
+- Feature 6: Generating outputs.csv file from analysis results.
 
 ## Getting Started
 
@@ -58,53 +58,47 @@ Obtain access to the private GitHub project from Timothy Warner
 
 ## Usage
 
-- Update the files constants.csv, test_conditions.csv and config.csv
-- Ensure there are data files for analysis and the file name and path match the code.
+- Update the files membrane_properties.csv, test_conditions.csv and experiment_configuration.csv
+- Data files in folder "data" have name with form Channel_i.csv where i is a sequential integer starting from 0.
 - Run the python code
 - Flux data stored in outputs.csv
 
 
 ## Configuration
 
-constants.csv file contains:
+membrane_properties.csv file contains:
+  - Membrane type (HF or FS). Input HF for hollow fiber membranes and FS for flat sheet membranes
   - Flat sheet area (m^2). Only utilized when flat sheet membrane is selected
   - Hollow fiber membrane length (Length (cm)). Only utilized when hollow fiber membrane is selected
   - Hollow fiber membrane outside diameter (Diameter (mm)). Only utilized when hollow fiber membrane is selected
   - Number of membranes tested simultaneously (number of membranes flowing to a single load cell)
+
+experiment_configuration.csv file contains:
+  - Number of load cells
+  - Input pressure unit (bar or PSI or MPa)
   - The length of time over which the mass change will be measured for flux calculations (Test Duration (s))
-  - The temperature of the room at which the test took place
-
-Flat sheet area (m^2),  Fiber Length (cm),  Fiber Diameter (mm),    Number of membranes per load cell,  Test Duration (s),  Test Temperature (C)
-0.00125663706,          10.0,               1.2,                    1,                                 60,                  22.0
-
+  - The data interval at which the load cell collects data (Data Interval (s))
+  - The temperature of the room at which the test took place (C)
+  - The number of data points over which a rolling average of the data applies (Data smoothing interval (# of points))
 
 test_conditions.csv file contains:
-  - The time at which the mass change measurement begins (Measurement Start time (24hr time))
-  - The transmembrane pressure at which the experiment is taking place (Pressure (PSI))
+  - The time at which the flux measurement begins
+  - The pressure over the measurement duraion
 
 Format:
+
 Measurement Start time (24hr time),Pressure
 19:23:00, 				            19.5
 18:56:00,			             	29.7
 18:31:00,				            39.7
 18:05:00,				            50.0
 
-config.csv file contains:
-  - Membrane type. Flat sheet and hollow fiber membranes should be labels FS and HF respectively.
-  - Number of load cells used to collect data
-  - Input pressure unit (bar or PSI or MPa)
-  - Data smoothing interval (s). The time interval over which the mass/volume data is smoothed to reduce noise
-
-Format:
-Membrane type (HF or FS),   Number of load cells,   Input pressure unit (bar or PSI or MPa),Data smoothing interval (s)
-HF,                         3,                      PSI,                                    10
 
 The time-mass data files must be named 'Channel_0.csv', 'Channel_1.csv', etc. and placed in the folder
-'Data'. The time data column must contain a time formatted HH:MM:SS but does not matter if a date or fractional
-second is included or not. There must be exactly 1 mass measurement per second or an error may occur or testing interval
-will be inaccurate.
+'Data'. The time data column must contain a time formatted HH:MM:SS but does not matter if a date, fractional
+second or additional data identifier is present or not. 
 
-Format:
+Example format:
 Date,Weight [Bridge Input Ch:0 -> 1046 S/N:583686]
 2024-05-06 17:48:10.060226,284.226583810652
 2024-05-06 17:48:11.060226,284.228423359392
@@ -128,22 +122,22 @@ Contact Timothy Warner to contribute.
     - [ ] Modify inputs file based on GUI
     - [ ] Select data files for analysis
     - [ ] Run button for the script
-    - [ ] (Optional) – provide additional setting such as:
-      - [ ] Choosing between flat sheet and hollow fiber membrane
-      - [ ] Choosing the number of data files to read and analyse – between 1 and 9 files
-      - [ ] Choosing input and output units – metric vs imperial
+- [x] Provide additional setting such as:
+  - [x] Choosing between flat sheet and hollow fiber membrane
+  - [x] Choosing the number of data files to read and analyse – between 1 and 9 files
+  - [x] Choosing input units for pressure – metric vs imperial
 - [ ] Improved functionality
     - [ ] Linear regression of flux values to calculate permeance of each data set
     - [ ] Plotting of flux vs pressure
       - [ ] Generating to copy-paste
       - [ ] Saving of image files
     - [x] Generation of useful test statistics
-    - [ ] Generalising the code, so it can function with different time intervals and different rolling average windows.
+    - [x] Generalising the code, so it can function with different time intervals and different rolling average windows.
     - [x] Allow for the addition of pressure data logging
-- [ ] Quality Control
+- [x] Quality Control
   - [x] Eliminated known bug when time values are missing from the raw data.
-  - [ ] Ensure the code functions as expected.
-  - [ ] Provide useful error messages and guide users to error free use of the software.
+  - [x] Ensure the code functions as expected.
+  - [x] Provide useful error messages and guide users to error free use of the software.
 - [ ] Packaging of code to standalone application
     - [ ] Generate .exe so the program can be run without installing python
     - [ ] Ensure the standard of the code is high and fit to be published on GitHub and subsequent software journals including organised documentation and sufficient quality control and de-bugging
