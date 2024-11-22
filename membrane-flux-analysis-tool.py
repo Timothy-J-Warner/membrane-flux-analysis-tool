@@ -1,5 +1,10 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import stats
+import subprocess
+import sys
+
 
 # Import configuration files
 config = pd.read_csv('inputs/experiment_configuration.csv')
@@ -93,7 +98,7 @@ flux_std = np.std(flux, axis=0)
 flux_se = flux_std / average_flux * 100
 
 # Create data series of output variables to be exported to a .csv file
-df_outputs = pd.DataFrame({
+df_flux_values = pd.DataFrame({
     'Measurement Start time (24hr time)': df_test_conditions['Measurement Start time (24hr time)'],
     'Pressure (bar)': test_pressure_bar,
 })
@@ -105,17 +110,25 @@ for i in range(number_load_cells):
     flux_data = pd.concat([flux_data, flux_series_data], axis=1)
 
 # Add flux data to outputs dataframe
-df_outputs = df_outputs.join(flux_data)
+df_flux_values = df_flux_values.join(flux_data)
 
 # Generate statistics dataframe
-output_stats = pd.DataFrame({
+flux_stats = pd.DataFrame({
     'Average Flux (LMH)': average_flux,
     'Standard Deviation (LMH)': flux_std,
     'Standard Error (%)': flux_se,
 })
 
 # Add statistics to outputs dataframe
-df_outputs = df_outputs.join(output_stats)
+df_flux_values = df_flux_values.join(flux_stats)
 
 # Export to .csv file
-df_outputs.to_csv("outputs/outputs.csv", index=False)
+df_flux_values.to_csv("outputs/flux_values.csv", index=False)
+
+########################################################################################################################
+
+# Additional Modules
+
+# Permeance
+
+subprocess.run([sys.executable, "modules/permeance.py"])

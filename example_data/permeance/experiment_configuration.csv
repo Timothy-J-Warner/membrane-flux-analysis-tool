@@ -1,0 +1,2 @@
+Number of load cells,Input pressure unit (bar or PSI or MPa),Test Duration (s),Data Interval (s),Test Temperature (C),Data smoothing interval (# of points)
+3,PSI,60,1,22.0,10

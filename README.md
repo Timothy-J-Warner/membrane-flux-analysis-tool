@@ -1,4 +1,4 @@
-# Permeance Analysis Software
+# Membrane Flux Analysis Tool
 
 ## Table of Contents
 
@@ -60,7 +60,7 @@ Obtain access to the private GitHub project from Timothy Warner
 
 - Update the files membrane_properties.csv, test_conditions.csv and experiment_configuration.csv
 - Data files in folder "data" have name with form Channel_i.csv where i is a sequential integer starting from 0.
-- Run the python code
+- Run the python script "membrane-flux-analysis-tool.py"
 - Flux data stored in outputs.csv
 
 
