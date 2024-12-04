@@ -1,7 +1,5 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from scipy import stats
 import subprocess
 import sys
 
@@ -9,6 +7,7 @@ import sys
 # Import configuration files
 config = pd.read_csv('inputs/experiment_configuration.csv')
 membrane_properties = pd.read_csv('inputs/membrane_properties.csv')
+module_selection = pd.read_csv('inputs/module_selection.csv', dtype=str)
 
 # Allocate variables associated with 'experiment_configuration.csv'
 number_load_cells = config['Number of load cells'][0]
@@ -125,10 +124,20 @@ df_flux_values = df_flux_values.join(flux_stats)
 # Export to .csv file
 df_flux_values.to_csv("outputs/flux_values.csv", index=False)
 
+print('\nFlux values saved to outputs/flux_values.csv')
+
 ########################################################################################################################
 
 # Additional Modules
 
 # Permeance
 
-subprocess.run([sys.executable, "modules/permeance.py"])
+if module_selection['Permeance'][0] == 'True':
+    subprocess.run([sys.executable, "modules/permeance.py"])
+
+
+# Flux decline
+
+if module_selection['Flux decline'][0] == 'True':
+    subprocess.run([sys.executable, "modules/flux_decline.py"])
+
