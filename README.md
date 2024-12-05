@@ -6,12 +6,13 @@
 - Built With
 - Features
 - Installation
-  - Prerequisites
-  - Installation Steps
 - Usage
 - Configuration
 - Modules
+  - Permeance
+  - Flux decline
 - Contributing
+- Roadmap
 - License
 - Contact
 - Acknowledgements
@@ -39,7 +40,7 @@ It currently has the following limitations:
 
 ## Features
 
-- Feature 1: Reading time-mass data, calculating flux and recording results in outputs.csv file.
+- Feature 1: Reading time-mass data, calculating flux and recording results in flux_values.csv file.
 - Feature 2: Permeance module to calculate permeance and plot flux vs pressure.
 - Feature 3: Flux decline module to plot and model a decrease in flux over time.
 
@@ -47,16 +48,16 @@ It currently has the following limitations:
 
 ### Prerequisites
 
-Python 3.7+
-numpy
-pandas
-matplotlib
-scipy
+- Python 3.7+
+- numpy
+- pandas
+- matplotlib
+- scipy
 
 
 ### Installation
 
-Obtain access to the private GitHub project from Timothy Warner
+Clone or fork the GitHub repository from https://github.com/Timothy-J-Warner/membrane-flux-analysis-tool.
 
 ## Usage
 
@@ -69,6 +70,11 @@ Obtain access to the private GitHub project from Timothy Warner
 
 
 ## Configuration
+
+### Data files:
+The time-mass data files must be named 'Channel_0.csv', 'Channel_1.csv', etc. and placed in the directory
+'data'. The time data column should contain a time formatted HH:MM:SS but does not matter if a date, fractional
+second or additional data identifier is present or not.
 
 ### membrane_properties.csv file contains:
   - Membrane type (HF or FS). Input HF for hollow fiber membranes and FS for flat sheet membranes
@@ -87,16 +93,11 @@ Obtain access to the private GitHub project from Timothy Warner
 
 ### test_conditions.csv file contains:
   - The time at which the flux measurement begins
-  - The pressure over the measurement duraion
+  - The pressure over the measurement duration 
 
 ### module_selection.csv file contains:
 - The names of individual modules
 - True or False (case-sensitive) values to define which modules are used.
-
-### Data files:
-The time-mass data files must be named 'Channel_0.csv', 'Channel_1.csv', etc. and placed in the directory
-'data'. The time data column should contain a time formatted HH:MM:SS but does not matter if a date, fractional
-second or additional data identifier is present or not. 
 
 ## Modules
 
@@ -143,6 +144,9 @@ https://github.com/Timothy-J-Warner/membrane-flux-analysis-tool.
 - [ ] Packaging of code to standalone application
     - [ ] Generate .exe so the program can be run without installing python
 
+## Licence
+
+This software is licensed under the MIT License. See LICENSE for more details.
 
 ## Contact
 
@@ -155,3 +159,4 @@ Timothy Warner - warnet2@mcmaster.ca
 - [NumPy](https://numpy.org/) - A fundamental package for scientific computing with Python.
 - [pandas](https://pandas.pydata.org/) - A powerful data analysis and manipulation library for Python.
 - [Matplotlib](https://matplotlib.org/) - A comprehensive library for creating static, animated, and interactive visualizations in Python.
+- [SciPy](https://scipy.org/) - Fundamental algorithms for scientific computing in Python
