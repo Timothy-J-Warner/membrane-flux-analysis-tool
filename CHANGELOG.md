@@ -1,15 +1,20 @@
 # Changelog
 
+## v0.2.3
+
+- Fixed errors in README.md.
+- Prepare documentation for public visibility of the GitHub project
+
 ## v0.2.2
 
-- Generalized the permeance module for a user specified number of load cells with 10 colours and 20 markers for plotting
-- Created example data for the permeance module
+- Generalized the permeance module for a user specified number of load cells with 10 colours and 20 markers for plotting.
+- Created example data for the permeance module.
 - Added module_selection.csv for choosing which additional modules to use.
 - Software now prints which outputs have been generated.
-- Added flux decline module
-- Provided example data for the permeance module
-- Updated README.md to reflect changes
-- Added a check for time format for flux decline
+- Added flux decline module.
+- Provided example data for the permeance module.
+- Updated README.md to reflect changes.
+- Added a check for time format for flux decline.
 
 
 ## v0.2.1
