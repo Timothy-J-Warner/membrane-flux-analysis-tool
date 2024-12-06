@@ -3,10 +3,14 @@
 ## Table of Contents
 
 - About The Project
+- Publication Details
 - Built With
 - Features
-- Installation
+- Getting Started
+  - Prerequisites
+  - Installation
 - Usage
+- Limitations
 - Configuration
 - Modules
   - Permeance
@@ -26,15 +30,18 @@ converts mass to volume based on test room temperature and Kell's equation, appl
 fluctuations in the volume data calculated from the load cells then uses changes in volume and 
 properties of the membranes to calculate flux based on specified test conditions.
 
-It currently has the following limitations:
-- The time-mass data files must be named 'Channel_0.csv', 'Channel_1.csv', etc.
-- If channel data is in HH:MM:SS format then test_conditions.csv must have time in HH:MM:SS format.
-- HH:MM:SS format is required for flux decline plotting.
-- Units of inputs have limited choices and output units are set
-- Pressure measurement must be recorded during the experiment manually to be included in the test conditions file.
-- If there are no mass values for a specified test time the program will end and provide a descriptive error message.
+Please cite "Development of a hollow fiber membrane permeance evaluation device with insights into differences 
+between outside-in and inside-out testing" when using this tool.
 
-### Built With
+## Publication Details
+Title: "Development of a hollow fiber membrane permeance evaluation device with insights into differences 
+between outside-in and inside-out testing"
+
+Authors: Timothy Warner, Nathan Mullins, Charles-Francois de Lannoy
+
+Corresponding Author: Charles-Francois de Lannoy (delannoc@mcmaster.ca)
+
+## Built With
 
 - [Python](https://www.python.org/) - A high-level programming language used for general-purpose programming.
 
@@ -48,12 +55,7 @@ It currently has the following limitations:
 
 ### Prerequisites
 
-- Python 3.7+
-- numpy
-- pandas
-- matplotlib
-- scipy
-
+Python 3.7+
 
 ### Installation
 
@@ -67,6 +69,12 @@ Clone or fork the GitHub repository from https://github.com/Timothy-J-Warner/mem
 - Run the python script "membrane-flux-analysis-tool.py"
 - Flux data stored in outputs.csv
 - Outputs from modules stored in individual folders in outputs directory
+
+## Limitations
+- The time-mass data files must be named 'Channel_0.csv', 'Channel_1.csv', etc.
+- If channel data is in HH:MM:SS format then test_conditions.csv must have time in HH:MM:SS format.
+- HH:MM:SS format is required for flux decline plotting.
+- Pressure measurements must be recorded during the experiment manually to be included in the test conditions file.
 
 
 ## Configuration
@@ -107,7 +115,7 @@ The permeance module takes flux calculated at each time specified in test_condit
 regression parameters in permeance_values.csv in directory outputs/permeance. The permeance plot is saved as a .jpg and
 .svg file in the same directory. It is recommended to define test conditions at different pressures for this module.
 
-### Flux decline
+### Flux Decline
 The flux decline module plots the decrease in flux over time during membrane separation due to fouling or compression. 
 The average flux at each time point is plotted along with the standard deviation and an exponential model superimposed.
 The parameters of the exponential model are saved as model_parameters.csv in directory outputs/flux_decline along with
