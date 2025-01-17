@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.3.0
+
+- Updated the README.md file.
+  - Added References section.
+  - Updated Prerequisite section.
+  - Removed publication details until publication of paper.
+  - Added LMfit details.
+- Improvements to the flux decline module.
+  - Implemented LMfit for exponential modelling.
+  - Changed flux decline error visualisation to a shaded area.
+  - Included a new plot of the residuals for the exponential modelling of flux decline.
+  - Standard deviation is only displayed if more than 1 load cell is used.
+
 ## v0.2.3
 
 - Fixed errors in README.md.
