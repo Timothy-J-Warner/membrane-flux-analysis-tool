@@ -45,11 +45,11 @@ volume and properties of the membranes to calculate flux based on specified test
 
 - Python 3.7+
 - Libraries:
-  - numpy
-  - pandas
-  - matplotlib
-  - SciPy
-  - lmfit
+  - numpy v2.2.2+
+  - pandas v2.2.3+
+  - matplotlib v3.10.0+
+  - SciPy v1.15.1+
+  - LMfit v1.3.2
 
 ### Installation
 
