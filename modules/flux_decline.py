@@ -55,7 +55,8 @@ except RuntimeError as e:
 a0 = exp_result.params['a0'].value
 a1 = exp_result.params['a1'].value
 t0 = exp_result.params['t0'].value
-residuals = exp_result.residual
+# LMfit v1.3.2 calculates: residuals = model - data, therefore to plot: residuals = data - model we must use a negative sign.
+residuals = -exp_result.residual
 r_squared = exp_result.rsquared
 
 # Print fitting statistics if required
@@ -84,10 +85,10 @@ plt.close()
 fig2 = plt.figure()
 
 points = plt.plot(time_minutes, residuals,
-                                 marker='o', markeredgecolor='k', color='b', linestyle='None', alpha=0.7)
+                  marker='o', markeredgecolor='k', color='#D9743A', linestyle='None', alpha=0.7)
 
 plt.xlabel('Time (mins)')
-plt.ylabel('Residual')
+plt.ylabel(u'Residual (Lm\u207b\u00b2hr\u207b\u00b9)')
 plt.axis((0, max(time_minutes), -max(abs(residuals)) * 1.1, max(abs(residuals)) * 1.1))
 plt.savefig('outputs/flux_decline/residuals.svg')
 plt.savefig('outputs/flux_decline/residuals.jpg', dpi=300)

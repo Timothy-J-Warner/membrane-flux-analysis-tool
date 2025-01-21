@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.3.2
+
+- Updated the README.md file.
+  - Added package versions
+- Added a negative sign in front of the residuals assignment in flux_decline.py module.
+  - This is required due to the definition of residuals in the LMfit module.
+- Updated package versions
+- Updated Python interpreter version
+
+## v0.3.2
+
+- Fixed citation formating in README.md
+
 ## v0.3.0
 
 - Updated the README.md file.
