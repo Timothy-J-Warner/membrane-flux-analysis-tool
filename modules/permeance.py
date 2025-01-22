@@ -33,7 +33,7 @@ for i in range(number_load_cells):
     r2[i] = lin_reg[i].rvalue ** 2
 
 # Plot flux (LMH) vs pressure (bar)
-fig = plt.figure()
+fig = plt.figure(layout="constrained")
 for i in range(number_load_cells):
     points, = plt.plot(pressure, flux[i], marker=markers[i], color=colours[i], label=f'Flux {i}', linestyle='None')
     trend, = plt.plot(pressure, slope[i] * pressure + intercept[i], '--', c=colours[i])

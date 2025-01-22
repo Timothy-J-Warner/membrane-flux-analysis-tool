@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.0.0
+
+- Prepare software for release.
+  - Updated contact details.
+  - Review of README.md
+  - Changed output figures to "constrained" layout.
+
 ## v0.3.2
 
 - Updated the README.md file.
@@ -9,7 +16,7 @@
 - Updated package versions
 - Updated Python interpreter version
 
-## v0.3.2
+## v0.3.1
 
 - Fixed citation formating in README.md
 

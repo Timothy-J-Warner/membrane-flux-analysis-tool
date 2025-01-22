@@ -53,16 +53,16 @@ volume and properties of the membranes to calculate flux based on specified test
 
 ### Installation
 
-Clone or fork the GitHub repository from https://github.com/Timothy-J-Warner/membrane-flux-analysis-tool.
+Download the most recent release from https://github.com/Timothy-J-Warner/membrane-flux-analysis-tool.
 
 ## Usage
 
 - Update the files membrane_properties.csv, test_conditions.csv and experiment_configuration.csv
 - Data files in folder "data" have name with form Channel_i.csv where i is a sequential integer starting from 0.
-- Define additional modules to use by modifying module_selection.csv
-- Run the python script "membrane-flux-analysis-tool.py"
-- Flux data stored in outputs.csv
-- Outputs from modules stored in individual folders in outputs directory
+- Define additional modules to use by modifying module_selection.csv.
+- Run the python script "membrane-flux-analysis-tool.py".
+- Flux data stored in outputs.csv.
+- Outputs from modules stored in individual folders in outputs directory.
 
 ## Limitations
 - The time-mass data files must be named 'Channel_0.csv', 'Channel_1.csv', etc.
@@ -153,11 +153,11 @@ This software is licensed under the MIT License. See LICENSE for more details.
 
 ## Contact
 
-Timothy Warner - warnet2@mcmaster.ca
+Timothy Warner - https://www.linkedin.com/in/timothy-warner-6a7b59bb/
 
 ## Acknowledgements
 
-- Project contributors: Timothy Warner, Nathan Mullins, Charles-Francois de Lannoy
+- Project contributors: Timothy Warner, Nathan Mullins, Charles-François de Lannoy
 - [Python](https://www.python.org/) - A high-level programming language used for general-purpose programming.
 - [NumPy](https://numpy.org/) - A fundamental package for scientific computing with Python.
 - [pandas](https://pandas.pydata.org/) - A powerful data analysis and manipulation library for Python.
