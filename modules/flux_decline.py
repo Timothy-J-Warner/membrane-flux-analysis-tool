@@ -63,7 +63,7 @@ r_squared = exp_result.rsquared
 # print(f'\nExponential model fitting statistics:\n\n{exp_result.fit_report()}')
 
 # Plot flux decline
-fig1 = plt.figure()
+fig1 = plt.figure(layout="constrained")
 
 x = np.linspace(0, time_minutes[-1], 1001)
 average_line, = plt.plot(time_minutes, flux, c='k', label='Average Flux')
@@ -82,7 +82,7 @@ plt.savefig('outputs/flux_decline/flux_decline.jpg', dpi=300)
 plt.close()
 
 # Plot residuals of exponential model
-fig2 = plt.figure()
+fig2 = plt.figure(layout="constrained")
 
 points = plt.plot(time_minutes, residuals,
                   marker='o', markeredgecolor='k', color='#D9743A', linestyle='None', alpha=0.7)
@@ -96,12 +96,12 @@ plt.savefig('outputs/flux_decline/residuals.jpg', dpi=300)
 plt.close()
 
 # Define parameters of exponential model
-model_paremeters = ['a0', 'a1', 't0', 'R2']
+model_parameters = ['a0', 'a1', 't0', 'R2']
 parameter_values = np.concatenate(([a0], [a1], [t0], [r_squared]))
 
 # Create database of model parameter values
 exponential_model = {
-    'Model Parameters': model_paremeters, u'Parameter Values': parameter_values
+    'Model Parameters': model_parameters, u'Parameter Values': parameter_values
 }
 
 # Save model parameter values
