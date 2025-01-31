@@ -104,7 +104,7 @@ second or additional data identifier is present or not.
 ## Modules
 
 ### Permeance
-The permeance module takes flux calculated at each time specified in test_conditions.csv and plots it again the pressure
+The permeance module takes flux calculated at each time specified in test_conditions.csv and plots it against the pressure
 (bar) at that time. It performs linear regression on the data from each load cell, plots trendlines and records the 
 regression parameters in permeance_values.csv in directory outputs/permeance. The permeance plot is saved as a .jpg and
 .svg file in the same directory. It is recommended to define test conditions at different pressures for this module.
