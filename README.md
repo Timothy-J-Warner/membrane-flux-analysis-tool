@@ -29,6 +29,10 @@ converts mass to volume based on test room temperature and Kell's equation [[1]]
 applies data smoothing to reduce fluctuations in the volume data calculated from the load cells then uses changes in 
 volume and properties of the membranes to calculate flux based on specified test conditions.
 
+## Publication Details
+
+When using this software, please cite: Timothy Warner, Shrisha Srinivasa, Nathan Mullins, et al. Development of a versatile testing apparatus for measuring hollow fiber membrane flux and permeance. ChemRxiv. 29 April 2026. https://doi.org/10.26434/chemrxiv.15002534/v1
+
 ## Built With
 
 - [Python](https://www.python.org/) - A high-level programming language used for general-purpose programming.
